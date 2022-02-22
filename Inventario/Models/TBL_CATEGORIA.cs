@@ -14,10 +14,19 @@ namespace Inventario.Models
     
     public partial class TBL_CATEGORIA
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TBL_CATEGORIA()
+        {
+            this.TBL_PRODUCTO = new HashSet<TBL_PRODUCTO>();
+        }
+    
         public int ID_CATEGORIA { get; set; }
         public string NOMBRE { get; set; }
         public string CREADO_POR { get; set; }
         public Nullable<System.DateTime> FECHA_CREACION { get; set; }
         public string ESTADO { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TBL_PRODUCTO> TBL_PRODUCTO { get; set; }
     }
 }

@@ -5,16 +5,21 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="cb93c20a41ea48d2b76ae6ea38d8e1a5" Name="Diagram1">
-        <EntityTypeShape EntityType="Inventario_BDModel.TBL_CATEGORIA" Width="1.5" PointX="0.75" PointY="4.75" />
-        <EntityTypeShape EntityType="Inventario_BDModel.TBL_DEPARTAMENTO" Width="1.5" PointX="2.75" PointY="4.75" />
-        <EntityTypeShape EntityType="Inventario_BDModel.TBL_EMPLEADO" Width="1.5" PointX="0.75" PointY="1.125" />
-        <EntityTypeShape EntityType="Inventario_BDModel.TBL_MODULO" Width="1.5" PointX="4.75" PointY="4.75" />
-        <EntityTypeShape EntityType="Inventario_BDModel.TBL_PANTALLA" Width="1.5" PointX="5.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Inventario_BDModel.TBL_PRODUCTO" Width="1.5" PointX="6.75" PointY="4.75" />
-        <EntityTypeShape EntityType="Inventario_BDModel.TBL_USUARIO" Width="1.5" PointX="3" PointY="1" />
-        <EntityTypeShape EntityType="Inventario_BDModel.TBL_PERMISO_PANTALLA" Width="1.5" PointX="7.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Inventario_BDModel.TBL_ROL" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="Inventario_BDModel.TBL_CATEGORIA" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="Inventario_BDModel.TBL_DEPARTAMENTO" Width="1.5" PointX="0.75" PointY="5.5" />
+        <EntityTypeShape EntityType="Inventario_BDModel.TBL_EMPLEADO" Width="1.5" PointX="0.75" PointY="9.125" />
+        <EntityTypeShape EntityType="Inventario_BDModel.TBL_MODULO" Width="1.5" PointX="5.75" PointY="1.625" />
+        <EntityTypeShape EntityType="Inventario_BDModel.TBL_PANTALLA" Width="1.5" PointX="8" PointY="1" />
+        <EntityTypeShape EntityType="Inventario_BDModel.TBL_PERMISO_PANTALLA" Width="1.5" PointX="10.25" PointY="1.625" />
+        <EntityTypeShape EntityType="Inventario_BDModel.TBL_PRODUCTO" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="Inventario_BDModel.TBL_ROL" Width="1.5" PointX="8" PointY="5.625" />
+        <EntityTypeShape EntityType="Inventario_BDModel.TBL_USUARIO" Width="1.5" PointX="3" PointY="9" />
+        <AssociationConnector Association="Inventario_BDModel.FK__TBL_PRODU__ID_CA__3A81B327" />
+        <AssociationConnector Association="Inventario_BDModel.FK__TBL_PRODU__ID_DE__3B75D760" />
         <AssociationConnector Association="Inventario_BDModel.FK__USUARIO__ID_EMPL__267ABA7A" />
+        <AssociationConnector Association="Inventario_BDModel.FK__TBL_PANTA__ID_MO__440B1D61" />
+        <AssociationConnector Association="Inventario_BDModel.FK__TBL_PERMI__ID_PA__3E52440B" />
+        <AssociationConnector Association="Inventario_BDModel.FK__TBL_PERMI__ID_RO__4316F928" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

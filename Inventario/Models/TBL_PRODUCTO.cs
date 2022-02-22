@@ -23,5 +23,8 @@ namespace Inventario.Models
         public Nullable<decimal> PRECIO { get; set; }
         public Nullable<decimal> CANTIDAD { get; set; }
         public Nullable<int> ID_DEPARTAMENTO { get; set; }
+    
+        public virtual TBL_CATEGORIA TBL_CATEGORIA { get; set; }
+        public virtual TBL_DEPARTAMENTO TBL_DEPARTAMENTO { get; set; }
     }
 }

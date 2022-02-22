@@ -14,6 +14,12 @@ namespace Inventario.Models
     
     public partial class TBL_PANTALLA
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TBL_PANTALLA()
+        {
+            this.TBL_PERMISO_PANTALLA = new HashSet<TBL_PERMISO_PANTALLA>();
+        }
+    
         public int ID_PANTALLA { get; set; }
         public string NOMBRE { get; set; }
         public string URL_PANTALLA { get; set; }
@@ -25,5 +31,9 @@ namespace Inventario.Models
         public string ICONO { get; set; }
         public string ESTADO { get; set; }
         public Nullable<int> PRINCIPAL { get; set; }
+    
+        public virtual TBL_MODULO TBL_MODULO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TBL_PERMISO_PANTALLA> TBL_PERMISO_PANTALLA { get; set; }
     }
 }

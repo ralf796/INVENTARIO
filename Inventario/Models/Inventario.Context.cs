@@ -30,9 +30,9 @@ namespace Inventario.Models
         public virtual DbSet<TBL_EMPLEADO> TBL_EMPLEADO { get; set; }
         public virtual DbSet<TBL_MODULO> TBL_MODULO { get; set; }
         public virtual DbSet<TBL_PANTALLA> TBL_PANTALLA { get; set; }
-        public virtual DbSet<TBL_PRODUCTO> TBL_PRODUCTO { get; set; }
-        public virtual DbSet<TBL_USUARIO> TBL_USUARIO { get; set; }
         public virtual DbSet<TBL_PERMISO_PANTALLA> TBL_PERMISO_PANTALLA { get; set; }
+        public virtual DbSet<TBL_PRODUCTO> TBL_PRODUCTO { get; set; }
         public virtual DbSet<TBL_ROL> TBL_ROL { get; set; }
+        public virtual DbSet<TBL_USUARIO> TBL_USUARIO { get; set; }
     }
 }

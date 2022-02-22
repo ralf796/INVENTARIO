@@ -18,5 +18,8 @@ namespace Inventario.Models
         public Nullable<int> ID_ROL { get; set; }
         public Nullable<int> ID_PANTALLA { get; set; }
         public string USUARIO { get; set; }
+    
+        public virtual TBL_PANTALLA TBL_PANTALLA { get; set; }
+        public virtual TBL_ROL TBL_ROL { get; set; }
     }
 }

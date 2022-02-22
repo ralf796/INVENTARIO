@@ -14,10 +14,19 @@ namespace Inventario.Models
     
     public partial class TBL_ROL
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TBL_ROL()
+        {
+            this.TBL_PERMISO_PANTALLA = new HashSet<TBL_PERMISO_PANTALLA>();
+        }
+    
         public int ID_ROL { get; set; }
         public string NOMBRE { get; set; }
         public string DESCRIPCION { get; set; }
         public string ESTADO { get; set; }
         public Nullable<System.DateTime> FECHA_CREACION { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TBL_PERMISO_PANTALLA> TBL_PERMISO_PANTALLA { get; set; }
     }
 }
