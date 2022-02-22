@@ -1,0 +1,431 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Inventario_BDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TBL_CATEGORIA">
+          <Key>
+            <PropertyRef Name="ID_CATEGORIA" />
+          </Key>
+          <Property Name="ID_CATEGORIA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
+          <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
+          <Property Name="FECHA_CREACION" Type="date" />
+          <Property Name="ESTADO" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="TBL_DEPARTAMENTO">
+          <Key>
+            <PropertyRef Name="ID_DEPARTAMENTO" />
+          </Key>
+          <Property Name="ID_DEPARTAMENTO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FECHA_CREACION" Type="date" />
+          <Property Name="ESTADO" Type="char" MaxLength="1" />
+          <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="TBL_EMPLEADO">
+          <Key>
+            <PropertyRef Name="ID_EMPLEADO" />
+          </Key>
+          <Property Name="ID_EMPLEADO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
+          <Property Name="ESTADO" Type="char" MaxLength="1" />
+          <Property Name="FECHA_CREACION" Type="date" />
+        </EntityType>
+        <EntityType Name="TBL_MODULO">
+          <Key>
+            <PropertyRef Name="ID_MODULO" />
+          </Key>
+          <Property Name="ID_MODULO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="300" />
+          <Property Name="ICONO" Type="varchar" MaxLength="50" />
+          <Property Name="ESTADO" Type="char" MaxLength="1" />
+          <Property Name="FECHA_CREACION" Type="date" />
+        </EntityType>
+        <EntityType Name="TBL_PANTALLA">
+          <Key>
+            <PropertyRef Name="ID_PANTALLA" />
+          </Key>
+          <Property Name="ID_PANTALLA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="URL_PANTALLA" Type="varchar" MaxLength="100" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="300" />
+          <Property Name="ID_MODULO" Type="int" Nullable="false" />
+          <Property Name="NIVEL" Type="int" />
+          <Property Name="PADRE" Type="int" />
+          <Property Name="ORDEN" Type="int" />
+          <Property Name="ICONO" Type="varchar" MaxLength="50" />
+          <Property Name="ESTADO" Type="char" MaxLength="1" />
+          <Property Name="PRINCIPAL" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Inventario_BD.dbo.TBL_PERMISO_PANTALLA' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="TBL_PERMISO_PANTALLA">
+          <Key>
+            <PropertyRef Name="ID_PERMISO" />
+          </Key>
+          <Property Name="ID_PERMISO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_ROL" Type="int" />
+          <Property Name="ID_PANTALLA" Type="int" />
+          <Property Name="USUARIO" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="TBL_PRODUCTO">
+          <Key>
+            <PropertyRef Name="ID_PRODUCTO" />
+          </Key>
+          <Property Name="ID_PRODUCTO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_CATEGORIA" Type="int" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FECHA_CREACION" Type="date" />
+          <Property Name="ESTADO" Type="char" MaxLength="1" />
+          <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
+          <Property Name="PRECIO" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="CANTIDAD" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ID_DEPARTAMENTO" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Inventario_BD.dbo.TBL_ROL' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="TBL_ROL">
+          <Key>
+            <PropertyRef Name="ID_ROL" />
+            <PropertyRef Name="NOMBRE" />
+            <PropertyRef Name="DESCRIPCION" />
+            <PropertyRef Name="ESTADO" />
+          </Key>
+          <Property Name="ID_ROL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="ESTADO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="FECHA_CREACION" Type="date" />
+        </EntityType>
+        <EntityType Name="TBL_USUARIO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_EMPLEADO" Type="int" />
+          <Property Name="USUARIO" Type="varchar" MaxLength="50" />
+          <Property Name="CONTRASEÑA" Type="varchar" MaxLength="50" />
+          <Property Name="FECHA_CREACION" Type="date" />
+          <Property Name="ID_MODULO" Type="int" />
+        </EntityType>
+        <Association Name="FK__USUARIO__ID_EMPL__267ABA7A">
+          <End Role="TBL_EMPLEADO" Type="Self.TBL_EMPLEADO" Multiplicity="0..1" />
+          <End Role="TBL_USUARIO" Type="Self.TBL_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_EMPLEADO">
+              <PropertyRef Name="ID_EMPLEADO" />
+            </Principal>
+            <Dependent Role="TBL_USUARIO">
+              <PropertyRef Name="ID_EMPLEADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Inventario_BDModelStoreContainer">
+          <EntitySet Name="TBL_CATEGORIA" EntityType="Self.TBL_CATEGORIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_DEPARTAMENTO" EntityType="Self.TBL_DEPARTAMENTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_EMPLEADO" EntityType="Self.TBL_EMPLEADO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_MODULO" EntityType="Self.TBL_MODULO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_PANTALLA" EntityType="Self.TBL_PANTALLA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_PRODUCTO" EntityType="Self.TBL_PRODUCTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_USUARIO" EntityType="Self.TBL_USUARIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_PERMISO_PANTALLA" EntityType="Self.TBL_PERMISO_PANTALLA" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TBL_PERMISO_PANTALLA].[ID_PERMISO] AS [ID_PERMISO], 
+    [TBL_PERMISO_PANTALLA].[ID_ROL] AS [ID_ROL], 
+    [TBL_PERMISO_PANTALLA].[ID_PANTALLA] AS [ID_PANTALLA], 
+    [TBL_PERMISO_PANTALLA].[USUARIO] AS [USUARIO]
+    FROM [dbo].[TBL_PERMISO_PANTALLA] AS [TBL_PERMISO_PANTALLA]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TBL_ROL" EntityType="Self.TBL_ROL" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TBL_ROL].[ID_ROL] AS [ID_ROL], 
+    [TBL_ROL].[NOMBRE] AS [NOMBRE], 
+    [TBL_ROL].[DESCRIPCION] AS [DESCRIPCION], 
+    [TBL_ROL].[ESTADO] AS [ESTADO], 
+    [TBL_ROL].[FECHA_CREACION] AS [FECHA_CREACION]
+    FROM [dbo].[TBL_ROL] AS [TBL_ROL]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__USUARIO__ID_EMPL__267ABA7A" Association="Self.FK__USUARIO__ID_EMPL__267ABA7A">
+            <End Role="TBL_EMPLEADO" EntitySet="TBL_EMPLEADO" />
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Inventario_BDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Inventario_BDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TBL_CATEGORIA" EntityType="Inventario_BDModel.TBL_CATEGORIA" />
+          <EntitySet Name="TBL_DEPARTAMENTO" EntityType="Inventario_BDModel.TBL_DEPARTAMENTO" />
+          <EntitySet Name="TBL_EMPLEADO" EntityType="Inventario_BDModel.TBL_EMPLEADO" />
+          <EntitySet Name="TBL_MODULO" EntityType="Inventario_BDModel.TBL_MODULO" />
+          <EntitySet Name="TBL_PANTALLA" EntityType="Inventario_BDModel.TBL_PANTALLA" />
+          <EntitySet Name="TBL_PRODUCTO" EntityType="Inventario_BDModel.TBL_PRODUCTO" />
+          <EntitySet Name="TBL_USUARIO" EntityType="Inventario_BDModel.TBL_USUARIO" />
+          <EntitySet Name="TBL_PERMISO_PANTALLA" EntityType="Inventario_BDModel.TBL_PERMISO_PANTALLA" />
+          <EntitySet Name="TBL_ROL" EntityType="Inventario_BDModel.TBL_ROL" />
+          <AssociationSet Name="FK__USUARIO__ID_EMPL__267ABA7A" Association="Inventario_BDModel.FK__USUARIO__ID_EMPL__267ABA7A">
+            <End Role="TBL_EMPLEADO" EntitySet="TBL_EMPLEADO" />
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="TBL_CATEGORIA">
+          <Key>
+            <PropertyRef Name="ID_CATEGORIA" />
+          </Key>
+          <Property Name="ID_CATEGORIA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
+          <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBL_DEPARTAMENTO">
+          <Key>
+            <PropertyRef Name="ID_DEPARTAMENTO" />
+          </Key>
+          <Property Name="ID_DEPARTAMENTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
+          <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBL_EMPLEADO">
+          <Key>
+            <PropertyRef Name="ID_EMPLEADO" />
+          </Key>
+          <Property Name="ID_EMPLEADO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="TBL_USUARIO" Relationship="Inventario_BDModel.FK__USUARIO__ID_EMPL__267ABA7A" FromRole="TBL_EMPLEADO" ToRole="TBL_USUARIO" />
+        </EntityType>
+        <EntityType Name="TBL_MODULO">
+          <Key>
+            <PropertyRef Name="ID_MODULO" />
+          </Key>
+          <Property Name="ID_MODULO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ICONO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="TBL_PANTALLA">
+          <Key>
+            <PropertyRef Name="ID_PANTALLA" />
+          </Key>
+          <Property Name="ID_PANTALLA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="URL_PANTALLA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ID_MODULO" Type="Int32" Nullable="false" />
+          <Property Name="NIVEL" Type="Int32" />
+          <Property Name="PADRE" Type="Int32" />
+          <Property Name="ORDEN" Type="Int32" />
+          <Property Name="ICONO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="PRINCIPAL" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TBL_PRODUCTO">
+          <Key>
+            <PropertyRef Name="ID_PRODUCTO" />
+          </Key>
+          <Property Name="ID_PRODUCTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_CATEGORIA" Type="Int32" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
+          <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="PRECIO" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CANTIDAD" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ID_DEPARTAMENTO" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TBL_USUARIO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_EMPLEADO" Type="Int32" />
+          <Property Name="USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CONTRASEÑA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
+          <Property Name="ID_MODULO" Type="Int32" />
+          <NavigationProperty Name="TBL_EMPLEADO" Relationship="Inventario_BDModel.FK__USUARIO__ID_EMPL__267ABA7A" FromRole="TBL_USUARIO" ToRole="TBL_EMPLEADO" />
+        </EntityType>
+        <EntityType Name="TBL_PERMISO_PANTALLA">
+          <Key>
+            <PropertyRef Name="ID_PERMISO" />
+          </Key>
+          <Property Name="ID_PERMISO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_ROL" Type="Int32" />
+          <Property Name="ID_PANTALLA" Type="Int32" />
+          <Property Name="USUARIO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBL_ROL">
+          <Key>
+            <PropertyRef Name="ID_ROL" />
+            <PropertyRef Name="NOMBRE" />
+            <PropertyRef Name="DESCRIPCION" />
+            <PropertyRef Name="ESTADO" />
+          </Key>
+          <Property Name="ID_ROL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
+        </EntityType>
+        <Association Name="FK__USUARIO__ID_EMPL__267ABA7A">
+          <End Type="Inventario_BDModel.TBL_EMPLEADO" Role="TBL_EMPLEADO" Multiplicity="0..1" />
+          <End Type="Inventario_BDModel.TBL_USUARIO" Role="TBL_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_EMPLEADO">
+              <PropertyRef Name="ID_EMPLEADO" />
+            </Principal>
+            <Dependent Role="TBL_USUARIO">
+              <PropertyRef Name="ID_EMPLEADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Inventario_BDModelStoreContainer" CdmEntityContainer="Inventario_BDEntities">
+          <EntitySetMapping Name="TBL_CATEGORIA">
+            <EntityTypeMapping TypeName="Inventario_BDModel.TBL_CATEGORIA">
+              <MappingFragment StoreEntitySet="TBL_CATEGORIA">
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID_CATEGORIA" ColumnName="ID_CATEGORIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_DEPARTAMENTO">
+            <EntityTypeMapping TypeName="Inventario_BDModel.TBL_DEPARTAMENTO">
+              <MappingFragment StoreEntitySet="TBL_DEPARTAMENTO">
+                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID_DEPARTAMENTO" ColumnName="ID_DEPARTAMENTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_EMPLEADO">
+            <EntityTypeMapping TypeName="Inventario_BDModel.TBL_EMPLEADO">
+              <MappingFragment StoreEntitySet="TBL_EMPLEADO">
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID_EMPLEADO" ColumnName="ID_EMPLEADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_MODULO">
+            <EntityTypeMapping TypeName="Inventario_BDModel.TBL_MODULO">
+              <MappingFragment StoreEntitySet="TBL_MODULO">
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="ICONO" ColumnName="ICONO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID_MODULO" ColumnName="ID_MODULO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_PANTALLA">
+            <EntityTypeMapping TypeName="Inventario_BDModel.TBL_PANTALLA">
+              <MappingFragment StoreEntitySet="TBL_PANTALLA">
+                <ScalarProperty Name="PRINCIPAL" ColumnName="PRINCIPAL" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="ICONO" ColumnName="ICONO" />
+                <ScalarProperty Name="ORDEN" ColumnName="ORDEN" />
+                <ScalarProperty Name="PADRE" ColumnName="PADRE" />
+                <ScalarProperty Name="NIVEL" ColumnName="NIVEL" />
+                <ScalarProperty Name="ID_MODULO" ColumnName="ID_MODULO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="URL_PANTALLA" ColumnName="URL_PANTALLA" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID_PANTALLA" ColumnName="ID_PANTALLA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_PRODUCTO">
+            <EntityTypeMapping TypeName="Inventario_BDModel.TBL_PRODUCTO">
+              <MappingFragment StoreEntitySet="TBL_PRODUCTO">
+                <ScalarProperty Name="ID_DEPARTAMENTO" ColumnName="ID_DEPARTAMENTO" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID_CATEGORIA" ColumnName="ID_CATEGORIA" />
+                <ScalarProperty Name="ID_PRODUCTO" ColumnName="ID_PRODUCTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_USUARIO">
+            <EntityTypeMapping TypeName="Inventario_BDModel.TBL_USUARIO">
+              <MappingFragment StoreEntitySet="TBL_USUARIO">
+                <ScalarProperty Name="ID_MODULO" ColumnName="ID_MODULO" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="CONTRASEÑA" ColumnName="CONTRASEÑA" />
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="ID_EMPLEADO" ColumnName="ID_EMPLEADO" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_PERMISO_PANTALLA">
+            <EntityTypeMapping TypeName="Inventario_BDModel.TBL_PERMISO_PANTALLA">
+              <MappingFragment StoreEntitySet="TBL_PERMISO_PANTALLA">
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="ID_PANTALLA" ColumnName="ID_PANTALLA" />
+                <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+                <ScalarProperty Name="ID_PERMISO" ColumnName="ID_PERMISO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_ROL">
+            <EntityTypeMapping TypeName="Inventario_BDModel.TBL_ROL">
+              <MappingFragment StoreEntitySet="TBL_ROL">
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

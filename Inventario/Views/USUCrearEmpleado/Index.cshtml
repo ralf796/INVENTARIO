@@ -1,0 +1,165 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+@section scripts{
+    <script src="~/Scripts/Usuarios/USUCrearEmpleado.js"></script>
+    <script src="~/Scripts/DevExtreme/21.1.5/dx.all.js"></script>
+    <script src="~/Scripts/DevExtreme/21.1.5/localization/dx.messages.es.js"></script>
+    <link rel="stylesheet" href="~/Content/DevExtreme/21.1.5/dx.material.orange.light.css">
+}
+<style>
+    #gridContainer .dx-scrollable-scroll {
+        height: 50px !important;
+    }
+
+    #gridContainer .dx-scrollable-scroll-content {
+        background-color: #FE650D !important;
+    }
+
+    table thead tr th {
+        font-size: 12px !important;
+    }
+
+    table tbody tr td {
+        font-size: 12px !important;
+    }
+
+    div.dt-buttons {
+        position: relative;
+        float: right;
+        margin-top: -2px;
+        margin-left: -15px;
+    }
+
+    .dataTables_length {
+        float: left;
+    }
+
+    #gridContainer span.current-value {
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+    #gridContainer span.diff {
+        width: 50px;
+        display: inline-block;
+    }
+
+    #gridContainer .inc {
+        color: #2ab71b;
+    }
+
+    #gridContainer .neg {
+        color: #060606;
+    }
+
+    #gridContainer .dec {
+        color: #f00;
+    }
+
+        #gridContainer .inc .arrow,
+        #gridContainer .dec .arrow {
+            display: inline-block;
+            height: 10px;
+            width: 10px;
+            background-repeat: no-repeat;
+            background-size: 10px 10px;
+        }
+
+    #gridContainer .inc .arrow {
+        /*background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAADKSURBVHjaYtTaLs1ABEiG0nPRJa56PEHhsxBhmCUQT4OyrwHxcXyKmQgYJgHE64CYDYrXQcXIMhCbAcgWkGzgNKh38QUB0QamIUUErkhKI9ZAGyCeTERkTYaqxWsgKA2txhdG6GGsvUNGGpeBRMUiGhCFGsqGzUBQQJsxkA5AemaiG5hDIBIIgQSgK0FmMDACs549kN5FZLjhA7+A2A2U9YSAOBeLAk4gnoBDczoOcSFGPIUDPxB/wCHHiKtwYGKgMhg1cBAaCBBgAJTUIL3ToPZfAAAAAElFTkSuQmCC');*/
+        background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyNC4wLjIsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgdmlld0JveD0iMCAwIDE4IDE4IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxOCAxODsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4NCgkuc3Qwe2ZpbGw6bm9uZTt9DQoJLnN0MXtmaWxsOiMyQUI3MUI7fQ0KPC9zdHlsZT4NCjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik0wLDBoMTh2MThIMFYweiIvPg0KPHBhdGggY2xhc3M9InN0MSIgZD0iTTksMS41QzQuOSwxLjUsMS41LDQuOSwxLjUsOXMzLjQsNy41LDcuNSw3LjVzNy41LTMuNCw3LjUtNy41UzEzLjEsMS41LDksMS41eiBNNy41LDEyLjhMMy44LDlsMS4xLTEuMQ0KCWwyLjcsMi43bDUuNy01LjdMMTQuMyw2TDcuNSwxMi44eiIvPg0KPC9zdmc+DQo=');
+    }
+
+    #gridContainer .dec .arrow {
+        /*background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAADJSURBVHjaYvzPgBfgkhYA4o8QFahKmBioDEYNHIQGsgBxIBCLkqgvAYi/g1mMjMjir0EJzR6If/6HpChKMMgMe3DKBeIcKhiY8x/MYoDj+RQYNgdkGLqBbEB8kgzDToL1YjEQhKWB+BUJhj0H64Eahs1AELYhMpJ+gtUiGYbLQBBOI8LANLBaIg1kAAc0vkiAqSPBQFAkHcNi2DGoHMkGgrAENOCRI0ECRQ2JBoKwJTQCfkLZDPgMZPxPXN5NhtJzMSsJVBMAAgwAyWSY2svfmrwAAAAASUVORK5CYII=');*/
+        background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyNC4wLjIsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgdmlld0JveD0iMCAwIDI0IDI0IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNCAyNDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4NCgkuc3Qwe2ZpbGw6bm9uZTt9DQoJLnN0MXtmaWxsOiNGRjAwMDA7fQ0KPC9zdHlsZT4NCjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik0wLDBoMjR2MjRIMFYweiIvPg0KPHBhdGggY2xhc3M9InN0MSIgZD0iTTEyLDJDNi41LDIsMiw2LjUsMiwxMnM0LjUsMTAsMTAsMTBzMTAtNC41LDEwLTEwUzE3LjUsMiwxMiwyeiBNMTcsMTUuNkwxNS42LDE3TDEyLDEzLjRMOC40LDE3TDcsMTUuNg0KCWwzLjYtMy42TDcsOC40TDguNCw3bDMuNiwzLjZMMTUuNiw3TDE3LDguNEwxMy40LDEyTDE3LDE1LjZ6Ii8+DQo8L3N2Zz4NCg==');
+    }
+
+    .options {
+        padding: 20px;
+        margin-top: 20px;
+        background-color: rgba(191, 191, 191, 0.15);
+    }
+
+    .caption {
+        font-weight: 500;
+        font-size: 18px;
+    }
+
+    .option {
+        margin-top: 10px;
+    }
+
+        .option > span {
+            position: relative;
+            top: 2px;
+            margin-right: 10px;
+        }
+
+        .option > .dx-widget {
+            width: 500px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+</style>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card" style="margin-top:-20px!important;">
+
+            <div class="card-header card-header-danger card-header-text">
+                <div class="card-text">
+                    <h4 class="card-title">EMPLEADO</h4>
+                </div>
+            </div>
+            <div class="card-body">
+                @* TABLA*@
+                <div class="row">
+                    <div class="demo-container col-md-12">
+                        <div id="gridContainer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* MODAL CREAR*@
+<div class="modal fade" id="modalEmpleado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="modalTitle" class="modal-title">EMPLEADO</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="material-icons">clear</i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form id="formCrearTipoEmpleado" class="formValida">
+                    <div class="row">
+                        @***HIDEN PARA GUARDAR EL ID DEL OBJETO*@
+                        <input type="hidden" id="hfControlador">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
+                            <div class="form-group">
+                                <label for="txtNombre" class="bmd-label-floating">NOMBRE</label>
+                                <input type="text" class="form-control" id="txtNombre" name="txtNombre" required>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" name="btnGuardar" id="btnGuardar" class="btn btn-link btn-deep-orange">Guardar</button>
+                <button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+

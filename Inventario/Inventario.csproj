@@ -1,0 +1,487 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F5D6C4F1-AA60-4935-992C-C02D37B5DA91}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Inventario</RootNamespace>
+    <AssemblyName>Inventario</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44347</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\DevExtreme\21.1.5\dx.material.orange.light.css" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\add-table.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\add.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\airplane.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\aligncenter.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\alignjustify.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\alignleft.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\alignright.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\arrowdown.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\arrowleft.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\arrowright.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\arrowup.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\background.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\blockquote.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\bold.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\bookmark.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\box.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\bulletlist.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\car.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\card.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\cart.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\chart.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\check.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\checklist.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\chevrondoubleleft.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\chevrondoubleright.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\chevrondown.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\chevronleft.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\chevronright.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\chevronup.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\clear.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\clearformat.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\clearsquare.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\clock.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\close.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\codeblock.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\coffee.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\collapse.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\color.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\columnchooser.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\columnfield.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\comment.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\contains.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\copy.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\cut.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\datafield.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\decreaseindent.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\details_view.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\doc.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\docx.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\doc_1.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\doesnotcontain.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\download.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\drag.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\drawer-left.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\drawer-right.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\edit.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\email.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\endswith.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\equal.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\event.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\expand.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\export.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\exportpdf.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\exportselected.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\exportxlsx.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\favorites.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\fieldchooser.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\fields.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\fill.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\filter.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\find.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\floppy.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\folder-close.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\folder.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\font.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\fontsize.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\food.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\formula.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\fullscreen.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\gift.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\globe.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\greater.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\greaterorequal.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\group.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\grouped.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\growfont.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\header.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\help.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\home.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\image.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\increaseindent.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\indent.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\indent1.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\info.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\isblank.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\isnotblank.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\italic.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\key.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\less.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\lessorequal.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\like.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\link.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\map.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\mention.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\menu.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\minus.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\money.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\more.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\move.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\music.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\new-folder.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\notequal.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\orderedlist.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\overflow.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\pallette.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\past.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\pdf.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\percent.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\photo.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\pin.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\pinleft.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\pinright.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\ppt.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\preferences.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\print.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\product.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\pulldown.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\range.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\redo.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\refresh.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\remove-table.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\rename.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\repeat.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\revert.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\rowfield.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\rtf.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\runner.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\save.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\selectall.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\share.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\shrinkfont.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\sortdown.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\sortdowntext.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\sorted.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\sortup.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\sortuptext.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\spindown.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\spinleft.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\spinright.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\spinup.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\square.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\startswith.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\strike.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\submenu-list.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\submenu.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\subscript.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\superscript.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\table-add-column-after.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\table-add-column-before.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\table-add-row-after.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\table-add-row-before.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\table-cell-properties.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\table-column-properties.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\table-merge-cells.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\table-properties.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\table-remove-column.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\table-remove-row.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\table-row-properties.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\table-split-cells.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\tag.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\tel.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\thumbnails_view.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\tips.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\toolbox.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\trash.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\txt.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\underline.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\unpin.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\unselectall.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\up-to.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\upload.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\user.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\variable.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\vert-align-bottom.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\vert-align-center.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\vert-align-top.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\video.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\warning.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\xls.svg" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\xlsx.svg" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Models\Inventario.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Inventario.Context.cs</LastGenOutput>
+      <DependentUpon>Inventario.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Inventario.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Inventario.edmx</DependentUpon>
+      <LastGenOutput>Inventario.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\Categorias\CATCrearCategoria.js" />
+    <Content Include="Scripts\Departamentos\DEPCrearDepartamento.js" />
+    <Content Include="Scripts\DevExtreme\21.1.5\dx-quill.min.js" />
+    <Content Include="Scripts\DevExtreme\21.1.5\dx.all.js" />
+    <Content Include="Scripts\DevExtreme\21.1.5\localization\dx.messages.en.js" />
+    <Content Include="Scripts\DevExtreme\21.1.5\localization\dx.messages.es.js" />
+    <Content Include="Scripts\DevExtreme\21.1.5\localization\dx.messages.fr.js" />
+    <Content Include="Scripts\Layout.js" />
+    <Content Include="Scripts\Login.js" />
+    <Content Include="Scripts\Productos\CATCrearProducto.js" />
+    <Content Include="Scripts\Reportes\REPArticulosES.js" />
+    <Content Include="Scripts\Reportes\REPCategoria.js" />
+    <Content Include="Scripts\Reportes\REPDepartamentos.js" />
+    <Content Include="Scripts\Reportes\REPProductoDepartamento.js" />
+    <Content Include="Scripts\Reportes\REPProductos.js" />
+    <Content Include="Scripts\Usuarios\USUCrearEmpleado.js" />
+    <Content Include="Scripts\Usuarios\USUCrearUsuario.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Clases\Encrypt.cs" />
+    <Compile Include="Clases\Home.cs" />
+    <Compile Include="Clases\SessionExpireFilterAttribute.cs" />
+    <Compile Include="Clases\Utils.cs" />
+    <Compile Include="Controllers\Categorias\CATCrearCategoriaController.cs" />
+    <Compile Include="Controllers\Categorias\CATDefaultController.cs" />
+    <Compile Include="Controllers\Departamentos\DEPDefaultController.cs" />
+    <Compile Include="Controllers\Departamentos\DEPCrearDepartamentoController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Productos\PRODCrearProductoController.cs" />
+    <Compile Include="Controllers\Productos\PRODDefaultController.cs" />
+    <Compile Include="Controllers\Reportes\REPArticulosESController.cs" />
+    <Compile Include="Controllers\Reportes\REPCategoriaController.cs" />
+    <Compile Include="Controllers\Reportes\REPDefaultController.cs" />
+    <Compile Include="Controllers\Reportes\REPDepartamentosController.cs" />
+    <Compile Include="Controllers\Reportes\REPProductoDepartamentoController.cs" />
+    <Compile Include="Controllers\Reportes\REPProductosController.cs" />
+    <Compile Include="Controllers\Usuarios\USUCrearEmpleadoController.cs" />
+    <Compile Include="Controllers\Usuarios\USUCrearUsuarioController.cs" />
+    <Compile Include="Controllers\Usuarios\USUDefaultController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Inventario.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Inventario.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Inventario.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Inventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Inventario.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Inventario.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBL_CATEGORIA.cs">
+      <DependentUpon>Inventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBL_DEPARTAMENTO.cs">
+      <DependentUpon>Inventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBL_EMPLEADO.cs">
+      <DependentUpon>Inventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBL_MODULO.cs">
+      <DependentUpon>Inventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBL_PANTALLA.cs">
+      <DependentUpon>Inventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBL_PERMISO_PANTALLA.cs">
+      <DependentUpon>Inventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBL_PRODUCTO.cs">
+      <DependentUpon>Inventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBL_ROL.cs">
+      <DependentUpon>Inventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBL_USUARIO.cs">
+      <DependentUpon>Inventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <EntityDeploy Include="Models\Inventario.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Inventario.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Inventario.edmx.diagram">
+      <DependentUpon>Inventario.edmx</DependentUpon>
+    </Content>
+    <Content Include="Content\DevExtreme\21.1.5\fonts\Roboto-300.ttf" />
+    <Content Include="Content\DevExtreme\21.1.5\fonts\Roboto-300.woff" />
+    <Content Include="Content\DevExtreme\21.1.5\fonts\Roboto-300.woff2" />
+    <Content Include="Content\DevExtreme\21.1.5\fonts\Roboto-400.ttf" />
+    <Content Include="Content\DevExtreme\21.1.5\fonts\Roboto-400.woff" />
+    <Content Include="Content\DevExtreme\21.1.5\fonts\Roboto-400.woff2" />
+    <Content Include="Content\DevExtreme\21.1.5\fonts\Roboto-500.ttf" />
+    <Content Include="Content\DevExtreme\21.1.5\fonts\Roboto-500.woff" />
+    <Content Include="Content\DevExtreme\21.1.5\fonts\Roboto-500.woff2" />
+    <Content Include="Content\DevExtreme\21.1.5\fonts\Roboto-700.ttf" />
+    <Content Include="Content\DevExtreme\21.1.5\fonts\Roboto-700.woff" />
+    <Content Include="Content\DevExtreme\21.1.5\fonts\Roboto-700.woff2" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\dxiconsmaterial.ttf" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\dxiconsmaterial.woff" />
+    <Content Include="Content\DevExtreme\21.1.5\icons\dxiconsmaterial.woff2" />
+    <None Include="packages.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\USUDefault\Index.cshtml" />
+    <Content Include="Views\REPDefault\Index.cshtml" />
+    <Content Include="Views\PRODDefault\Index.cshtml" />
+    <Content Include="Views\DEPDefault\Index.cshtml" />
+    <Content Include="Views\CATDefault\Index.cshtml" />
+    <Content Include="Views\USUCrearEmpleado\Index.cshtml" />
+    <Content Include="Views\USUCrearUsuario\Index.cshtml" />
+    <Content Include="Views\CATCrearCategoria\Index.cshtml" />
+    <Content Include="Views\PRODCrearProducto\Index.cshtml" />
+    <Content Include="Views\REPArticulosES\Index.cshtml" />
+    <Content Include="Views\REPCategoria\Index.cshtml" />
+    <Content Include="Views\REPDepartamentos\Index.cshtml" />
+    <Content Include="Views\REPProductoDepartamento\Index.cshtml" />
+    <Content Include="Views\REPProductos\Index.cshtml" />
+    <Content Include="Views\DEPCrearDepartamento\Index.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>29467</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44347/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

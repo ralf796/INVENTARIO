@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@section scripts{
+    <script src="~/Scripts/Categorias/CATCrearCategoria.js"></script>
+    <script src="~/Scripts/DevExtreme/21.1.5/dx.all.js"></script>
+    <script src="~/Scripts/DevExtreme/21.1.5/localization/dx.messages.es.js"></script>
+    <link rel="stylesheet" href="~/Content/DevExtreme/21.1.5/dx.material.orange.light.css">
+}
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card" style="margin-top:-20px!important;">
+
+            <div class="card-header card-header-deep-orange card-header-text">
+                <div class="card-text">
+                    <h4 class="card-title">CATEGORIA</h4>
+                </div>
+            </div>
+            <div class="card-body">
+                @* TABLA*@
+                <div class="row">
+                    <div class="demo-container col-md-12">
+                        <div id="gridContainer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* MODAL CREAR*@
+<div class="modal fade" id="modalTipoMenu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="modalTitle" class="modal-title">CATEGORIA</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="material-icons">clear</i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form id="formCrearTipoMenu" class="formValida">
+                    <div class="row">
+                        @***HIDEN PARA GUARDAR EL ID DEL OBJETO*@
+                        <input type="hidden" id="hfIDTIPOMENU">
+                        @***HIDEN PARA GUARDAR EL ID DEL OBJETO*@
+                        <input type="hidden" id="hfControlador">
+
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
+                            <div class="form-group">
+                                <label for="txtNombre" class="bmd-label-floating">NOMBRE</label>
+                                <input type="text" class="form-control" id="txtNombre" name="txtNombre" required>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" name="btnGuardar" id="btnGuardar" class="btn btn-link btn-deep-orange">Guardar</button>
+                <button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

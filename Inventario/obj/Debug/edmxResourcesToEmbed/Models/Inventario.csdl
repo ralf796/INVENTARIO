@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Inventario_BDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Inventario_BDEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TBL_CATEGORIA" EntityType="Inventario_BDModel.TBL_CATEGORIA" />
+    <EntitySet Name="TBL_DEPARTAMENTO" EntityType="Inventario_BDModel.TBL_DEPARTAMENTO" />
+    <EntitySet Name="TBL_EMPLEADO" EntityType="Inventario_BDModel.TBL_EMPLEADO" />
+    <EntitySet Name="TBL_MODULO" EntityType="Inventario_BDModel.TBL_MODULO" />
+    <EntitySet Name="TBL_PANTALLA" EntityType="Inventario_BDModel.TBL_PANTALLA" />
+    <EntitySet Name="TBL_PRODUCTO" EntityType="Inventario_BDModel.TBL_PRODUCTO" />
+    <EntitySet Name="TBL_USUARIO" EntityType="Inventario_BDModel.TBL_USUARIO" />
+    <EntitySet Name="TBL_PERMISO_PANTALLA" EntityType="Inventario_BDModel.TBL_PERMISO_PANTALLA" />
+    <EntitySet Name="TBL_ROL" EntityType="Inventario_BDModel.TBL_ROL" />
+    <AssociationSet Name="FK__USUARIO__ID_EMPL__267ABA7A" Association="Inventario_BDModel.FK__USUARIO__ID_EMPL__267ABA7A">
+      <End Role="TBL_EMPLEADO" EntitySet="TBL_EMPLEADO" />
+      <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="TBL_CATEGORIA">
+    <Key>
+      <PropertyRef Name="ID_CATEGORIA" />
+    </Key>
+    <Property Name="ID_CATEGORIA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
+    <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TBL_DEPARTAMENTO">
+    <Key>
+      <PropertyRef Name="ID_DEPARTAMENTO" />
+    </Key>
+    <Property Name="ID_DEPARTAMENTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
+    <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TBL_EMPLEADO">
+    <Key>
+      <PropertyRef Name="ID_EMPLEADO" />
+    </Key>
+    <Property Name="ID_EMPLEADO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="TBL_USUARIO" Relationship="Inventario_BDModel.FK__USUARIO__ID_EMPL__267ABA7A" FromRole="TBL_EMPLEADO" ToRole="TBL_USUARIO" />
+  </EntityType>
+  <EntityType Name="TBL_MODULO">
+    <Key>
+      <PropertyRef Name="ID_MODULO" />
+    </Key>
+    <Property Name="ID_MODULO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="ICONO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="TBL_PANTALLA">
+    <Key>
+      <PropertyRef Name="ID_PANTALLA" />
+    </Key>
+    <Property Name="ID_PANTALLA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="URL_PANTALLA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="ID_MODULO" Type="Int32" Nullable="false" />
+    <Property Name="NIVEL" Type="Int32" />
+    <Property Name="PADRE" Type="Int32" />
+    <Property Name="ORDEN" Type="Int32" />
+    <Property Name="ICONO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="PRINCIPAL" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TBL_PRODUCTO">
+    <Key>
+      <PropertyRef Name="ID_PRODUCTO" />
+    </Key>
+    <Property Name="ID_PRODUCTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_CATEGORIA" Type="Int32" />
+    <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
+    <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="PRECIO" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CANTIDAD" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ID_DEPARTAMENTO" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TBL_USUARIO">
+    <Key>
+      <PropertyRef Name="ID_USUARIO" />
+    </Key>
+    <Property Name="ID_USUARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_EMPLEADO" Type="Int32" />
+    <Property Name="USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CONTRASEÑA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
+    <Property Name="ID_MODULO" Type="Int32" />
+    <NavigationProperty Name="TBL_EMPLEADO" Relationship="Inventario_BDModel.FK__USUARIO__ID_EMPL__267ABA7A" FromRole="TBL_USUARIO" ToRole="TBL_EMPLEADO" />
+  </EntityType>
+  <EntityType Name="TBL_PERMISO_PANTALLA">
+    <Key>
+      <PropertyRef Name="ID_PERMISO" />
+    </Key>
+    <Property Name="ID_PERMISO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_ROL" Type="Int32" />
+    <Property Name="ID_PANTALLA" Type="Int32" />
+    <Property Name="USUARIO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TBL_ROL">
+    <Key>
+      <PropertyRef Name="ID_ROL" />
+      <PropertyRef Name="NOMBRE" />
+      <PropertyRef Name="DESCRIPCION" />
+      <PropertyRef Name="ESTADO" />
+    </Key>
+    <Property Name="ID_ROL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPCION" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="ESTADO" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
+  </EntityType>
+  <Association Name="FK__USUARIO__ID_EMPL__267ABA7A">
+    <End Type="Inventario_BDModel.TBL_EMPLEADO" Role="TBL_EMPLEADO" Multiplicity="0..1" />
+    <End Type="Inventario_BDModel.TBL_USUARIO" Role="TBL_USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_EMPLEADO">
+        <PropertyRef Name="ID_EMPLEADO" />
+      </Principal>
+      <Dependent Role="TBL_USUARIO">
+        <PropertyRef Name="ID_EMPLEADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
