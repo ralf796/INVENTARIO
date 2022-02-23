@@ -62,6 +62,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TBL_PERMISO_PANTALLA">
+      <EntityTypeMapping TypeName="Inventario_BDModel.TBL_PERMISO_PANTALLA">
+        <MappingFragment StoreEntitySet="TBL_PERMISO_PANTALLA">
+          <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+          <ScalarProperty Name="ID_PANTALLA" ColumnName="ID_PANTALLA" />
+          <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+          <ScalarProperty Name="ID_PERMISO" ColumnName="ID_PERMISO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="TBL_PRODUCTO">
       <EntityTypeMapping TypeName="Inventario_BDModel.TBL_PRODUCTO">
         <MappingFragment StoreEntitySet="TBL_PRODUCTO">
@@ -77,6 +87,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TBL_ROL">
+      <EntityTypeMapping TypeName="Inventario_BDModel.TBL_ROL">
+        <MappingFragment StoreEntitySet="TBL_ROL">
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="TBL_USUARIO">
       <EntityTypeMapping TypeName="Inventario_BDModel.TBL_USUARIO">
         <MappingFragment StoreEntitySet="TBL_USUARIO">
@@ -86,27 +107,6 @@
           <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
           <ScalarProperty Name="ID_EMPLEADO" ColumnName="ID_EMPLEADO" />
           <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TBL_PERMISO_PANTALLA">
-      <EntityTypeMapping TypeName="Inventario_BDModel.TBL_PERMISO_PANTALLA">
-        <MappingFragment StoreEntitySet="TBL_PERMISO_PANTALLA">
-          <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
-          <ScalarProperty Name="ID_PANTALLA" ColumnName="ID_PANTALLA" />
-          <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
-          <ScalarProperty Name="ID_PERMISO" ColumnName="ID_PERMISO" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TBL_ROL">
-      <EntityTypeMapping TypeName="Inventario_BDModel.TBL_ROL">
-        <MappingFragment StoreEntitySet="TBL_ROL">
-          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
-          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
-          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
-          <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

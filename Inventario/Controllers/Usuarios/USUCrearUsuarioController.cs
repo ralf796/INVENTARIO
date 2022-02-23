@@ -82,7 +82,7 @@ namespace Inventario.Controllers.Usuarios
         {
             try
             {
-                string query = "SELECT ID_MODULO, NOMBRE FROM TBL_MODULO WHERE ESTADO='A'";
+                string query = "SELECT ID_MODULO, NOMBRE FROM TBL_MODULO WHERE ESTADO='A' AND ID_MODULO=1";
                 var lista = db.Database.SqlQuery<MODULO_>(query).ToList();
                 return Json(new { ESTADO = 1, DATA = lista }, JsonRequestBehavior.AllowGet);
             }
@@ -106,7 +106,12 @@ namespace Inventario.Controllers.Usuarios
                     obtenerDatos.USUARIO = obtenerDatos.USUARIO;
                     db.TBL_USUARIO.Add(obtenerDatos);
                     db.SaveChanges();
+
+                    string vQueryDatosAdicionales = @" INSERT INTO TBL_PERMISO_PANTALLA(ID_ROL, ID_PANTALLA, USUARIO)
+                                                        SELECT 1, ID_PANTALLA, '" + obtenerDatos.USUARIO + "' FROM TBL_PANTALLA";
+                    db.Database.ExecuteSqlCommand(vQueryDatosAdicionales);
                     transaccion.Commit();
+
                     return Json(new { Estado = 1 }, JsonRequestBehavior.AllowGet);
                 }
                 catch (Exception ex)

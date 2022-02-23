@@ -3,5 +3,94 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
+@section scripts{
+    <script src="~/Scripts/Reportes/REPDepartamentos.js"></script>
+    <script src="~/Scripts/DevExtreme/21.1.5/dx.all.js"></script>
+    <script src="~/Scripts/DevExtreme/21.1.5/localization/dx.messages.es.js"></script>
+    <link rel="stylesheet" href="~/Content/DevExtreme/21.1.5/dx.material.orange.light.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.4.0/polyfill.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/3.3.1/exceljs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+}
+<style>
+    table thead tr th {
+        font-size: 12px !important;
+    }
+
+    table tbody tr td {
+        font-size: 12px !important;
+    }
+
+    #PASS_I {
+        width: 100px;
+        font: 30px;
+    }
+
+    .divButtons {
+        top: 45%;
+        width: 50px;
+        right: 0;
+        position: fixed;
+    }
+
+    div.dt-buttons {
+        position: relative;
+        float: right;
+        margin-top: -2px;
+        margin-left: -15px;
+    }
+
+    .dataTables_length {
+        float: left;
+    }
+
+    td.remover-control {
+        background: url('../../image/open.png') no-repeat center center !important;
+        cursor: pointer !important;
+    }
+
+    tr.remover td.remover-control {
+        background: url('../../image/close.png') no-repeat center center !important;
+        cursor: pointer !important;
+    }
+
+    td.imprimir {
+        background: url('../../image/Granel.png') no-repeat center center !important;
+        cursor: pointer !important;
+    }
+</style>
+<div class="row" id="idRow2" style="margin-top:-10PX">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 ml-auto mr-auto">
+        <div class="card" style="margin-top:5px!important;">
+            <div class="card-header card-header-deep-orange card-header-text">
+                <div class="card-text">
+                    <h4 class="card-title">REPORTE DE DEPARTAMENTOS</h4>
+                </div>
+            </div>
+            <div class="card-body">
+                <form id="formReporte" class="formValida">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12  col-lg-3 col-xl-3">
+                            <div class="form-group">
+                                <label for="txtNombre" class="bmd-label-floating ">NOMBRE</label>
+                                <input type="text" class="form-control" id="txtNombre" name="txtNombre" data-live-search="true" required />
+                            </div>
+                        </div>
+                        <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12 col-xs-12">
+                            <button type="button" class="btn btn-primary btn-round btn-just-icon" id="btnGenerarReporte">
+                                <i class="material-icons">search</i>
+                                <div class="ripple-container"></div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="dx-datagrid-container  col-md-12">
+                            <div id="gridContainer"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
